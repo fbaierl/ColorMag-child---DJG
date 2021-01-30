@@ -72,7 +72,12 @@ if ( ! function_exists( 'colormag_below_header_bar_display' ) ) :
 									<?php get_search_form(); ?>
 								</div>
 							</div>
-							<?php pll_the_languages(array('show_flags' => 1, 'show_names' => 1, 'hide_current' => 1 ) ); ?>
+							<?php 
+							    // according to the documentation, the functions existance has to be checked here since the site will badly break with a fatal error at next Polylang update (as WordPress deletes the plugin when updtating it)
+								if(function_exists( 'pll_the_languages')) :
+									pll_the_languages(array('show_flags' => 1, 'show_names' => 1, 'hide_current' => 1 ) ); 
+								endif;
+							?>
 						<?php } ?>
 					</div>
 				<?php } ?>
